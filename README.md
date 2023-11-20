@@ -12,4 +12,4 @@
 
 # Commit Rule
 
-- [Course]: sectionNumber-SectionName
+💙 CourseName: Num-Name
