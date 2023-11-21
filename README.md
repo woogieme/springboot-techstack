@@ -9,3 +9,7 @@
 
 # Why ?
 💚 기본이 튼튼하지 않다면 화려한 기술스택은 구현해봤자 큰 의미가 없다고 생각함 
+
+# Commit Rule
+
+💙 CourseName: Num-Name
