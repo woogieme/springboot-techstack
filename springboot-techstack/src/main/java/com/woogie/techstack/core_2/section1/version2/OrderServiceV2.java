@@ -24,9 +24,7 @@ public class OrderServiceV2 {
 			trace.end(status);
 		} catch (Exception e) {
 			trace.exception(status, e);
-			throw e; // 예외를 꼭 다시 던져줘야함
-			//왜냐하면 trace.exception에서 멈추게된다면 로그 기능때문에 다시 못돌아올수있는
-			//비지니스 로직을 건드는 행위이므로 throw e를 해줘야함
+			throw e;
 		}
 	}
 
