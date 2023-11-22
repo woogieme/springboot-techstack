@@ -2,9 +2,8 @@ package com.woogie.techstack.trace.logtrace;
 
 import org.junit.jupiter.api.Test;
 
-import com.woogie.techstack.core_2.section2.trace.TraceStatus;
-import com.woogie.techstack.core_2.section2.trace.logtrace.FieldLogTrace;
-import com.woogie.techstack.core_2.section2.trace.logtrace.ThreadLocalLogTrace;
+import com.woogie.techstack.core_2.trace.TraceStatus;
+import com.woogie.techstack.core_2.trace.logtrace.ThreadLocalLogTrace;
 
 public class ThreadLocalLogTraceTest {
 

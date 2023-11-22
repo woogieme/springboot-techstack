@@ -1,4 +1,4 @@
-package com.woogie.techstack.core_2.section2.trace;
+package com.woogie.techstack.core_2.trace;
 
 public class TraceStatus {
 

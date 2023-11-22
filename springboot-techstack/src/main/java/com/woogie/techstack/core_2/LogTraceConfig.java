@@ -1,11 +1,10 @@
-package com.woogie.techstack.core_2.section2;
+package com.woogie.techstack.core_2;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.woogie.techstack.core_2.section2.trace.logtrace.FieldLogTrace;
-import com.woogie.techstack.core_2.section2.trace.logtrace.LogTrace;
-import com.woogie.techstack.core_2.section2.trace.logtrace.ThreadLocalLogTrace;
+import com.woogie.techstack.core_2.trace.logtrace.LogTrace;
+import com.woogie.techstack.core_2.trace.logtrace.ThreadLocalLogTrace;
 
 @Configuration //Component가있음 자동으로 컴포넌트 스캔
 public class LogTraceConfig {

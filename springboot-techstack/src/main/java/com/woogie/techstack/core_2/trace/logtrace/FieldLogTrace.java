@@ -1,25 +1,31 @@
-package com.woogie.techstack.core_2.section2.trace.logtrace;
+package com.woogie.techstack.core_2.trace.logtrace;
 
-import com.woogie.techstack.core_2.section2.trace.TraceId;
-import com.woogie.techstack.core_2.section2.trace.TraceStatus;
+import com.woogie.techstack.core_2.trace.TraceId;
+import com.woogie.techstack.core_2.trace.TraceStatus;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ThreadLocalLogTrace implements LogTrace {
+public class FieldLogTrace implements LogTrace {
 
 	private static final String START_PREFIX = "-->";
 	private static final String COMPLETE_PREFIX = "<--";
 	private static final String EX_PREFIX = "<X-";
 
-	//private TraceId traceIdHolder; //traceId 동기화, 동시성 이슈 발생
+		private TraceId traceIdHolder; //traceId 동기화, 동시성 이슈 발생
 
-	private ThreadLocal<TraceId> traceIdHolder = new ThreadLocal<TraceId>();
+		private void syncTraceId() {
+			if (traceIdHolder == null) {
+				traceIdHolder = new TraceId();
+			} else {
+				traceIdHolder = traceIdHolder.createNextId();
+			}
+		}
 
 	@Override
 	public TraceStatus begin(String message) {
 		syncTraceId();
-		TraceId traceId = traceIdHolder.get();
+		TraceId traceId = traceIdHolder;
 
 		Long startTimeMs = System.currentTimeMillis();
 
@@ -56,20 +62,10 @@ public class ThreadLocalLogTrace implements LogTrace {
 	}
 
 	private void releaseTraceId() {
-		TraceId traceId = traceIdHolder.get();
-		if (traceId.isFirstLevel()) {
-			traceIdHolder.remove(); //destroy
+		if (traceIdHolder.isFirstLevel()) {
+			traceIdHolder = null; //destroy
 		} else {
-			traceIdHolder.set(traceId.createPrevId());
-		}
-	}
-
-	private void syncTraceId() {
-		TraceId traceId = traceIdHolder.get();
-		if (traceId == null) {
-			traceIdHolder.set(new TraceId());
-		} else {
-			traceIdHolder.set(traceId.createNextId());
+			traceIdHolder = traceIdHolder.createPrevId();
 		}
 	}
 

@@ -1,6 +1,6 @@
-package com.woogie.techstack.core_2.section2.trace.logtrace;
+package com.woogie.techstack.core_2.trace.logtrace;
 
-import com.woogie.techstack.core_2.section2.trace.TraceStatus;
+import com.woogie.techstack.core_2.trace.TraceStatus;
 
 public interface LogTrace {
 
